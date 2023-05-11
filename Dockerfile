@@ -7,10 +7,10 @@ WORKDIR /cdz-ocr
 
 # Copier les fichiers de configuration et de dépendances du projet
 COPY target/spring-boot-docker.jar /cdz-ocr
-COPY C:/Program Files/Tesseract-OCR/tessdata /cdz-ocr/tessdata/
+#COPY C:/Program Files/Tesseract-OCR/tessdata /cdz-ocr/tessdata/
 
 # Installer Tesseract OCR
-#RUN apk add --update tesseract-ocr
+RUN apk add --update tesseract-ocr
 
 # Définir les variables d'environnement pour Tesseract OCR
 ENV LC_ALL=C
