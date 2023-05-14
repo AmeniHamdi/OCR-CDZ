@@ -3,6 +3,7 @@ package com.example.cdzocr.component;
 import net.sourceforge.tess4j.Tesseract;
 import net.sourceforge.tess4j.TesseractException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Component;
@@ -17,11 +18,14 @@ import java.util.*;
 @Component
 public class CustomKafkaListener {
 
+    @Value("tesseract.dataPath")
+    private String tesseractDataPath;
+
     @Autowired
     private KafkaTemplate<String, Map> kafkaTemplate;
    private String extractData(byte[] byteArray) {
         Tesseract tesseract = new Tesseract();
-        tesseract.setDatapath("C:\\Program Files\\Tesseract-OCR\\tessdata");
+        tesseract.setDatapath(tesseractDataPath);
         tesseract.setLanguage("eng");
         tesseract.setPageSegMode(1);
         tesseract.setOcrEngineMode(1);

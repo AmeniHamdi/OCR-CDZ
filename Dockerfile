@@ -14,13 +14,11 @@ RUN apk add --update tesseract-ocr
 
 # Définir les variables d'environnement pour Tesseract OCR
 ENV LC_ALL=C
-ENV TESSDATA_PREFIX=/cdz-ocr/tessdata
+ENV TESSDATA_PREFIX=/usr/share/tessdata/
 
 # Copier votre application dans l'image Docker
 COPY . /cdz-ocr
 
-# Exposer le port sur lequel l'application est exécutée
-EXPOSE 8088
 
 # Lancer l'application Spring Boot lors du démarrage du conteneur
 CMD ["java", "-jar", "spring-boot-docker.jar"]
