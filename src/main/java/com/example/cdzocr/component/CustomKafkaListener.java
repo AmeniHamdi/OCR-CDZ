@@ -18,7 +18,7 @@ import java.util.*;
 @Component
 public class CustomKafkaListener {
 
-    @Value("tesseract.dataPath")
+    @Value("${tesseract.dataPath}")
     private String tesseractDataPath;
 
     @Autowired
